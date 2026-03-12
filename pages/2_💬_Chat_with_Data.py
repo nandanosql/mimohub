@@ -232,9 +232,12 @@ if user_input := st.chat_input("Ask anything about your data...", key="chat_inpu
                 )
                 response = st.write_stream(stream)
 
+                # Convert to plain string (st.write_stream may return StreamingOutput)
+                response_text = str(response) if response else ""
+
                 # Persist AI response
-                st.session_state.messages.append({"role": "assistant", "content": response})
-                add_message(st.session_state["active_conv_id"], "assistant", response)
+                st.session_state.messages.append({"role": "assistant", "content": response_text})
+                add_message(st.session_state["active_conv_id"], "assistant", response_text)
 
             except ValueError as e:
                 st.error(str(e))

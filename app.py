@@ -105,7 +105,7 @@ if not user.get("onboarded"):
     with col_center:
 
         # Progress indicator
-        total_steps = 4
+        total_steps = 5
         progress_pct = (step + 1) / total_steps
         st.progress(progress_pct, text=f"Step {step + 1} of {total_steps}")
         st.markdown("<br>", unsafe_allow_html=True)
@@ -142,13 +142,57 @@ if not user.get("onboarded"):
                     </div>
                     """, unsafe_allow_html=True)
 
-        # ── Step 1: Upload ──────────────────────────────────────────
+        # ── Step 1: Supported Data Sources ───────────────────────────
         elif step == 1:
+            st.markdown("""
+            <div style="text-align:center;">
+                <p style="font-size:3rem;">📂</p>
+                <h2 style="font-size:1.8rem;font-weight:700;color:#1E293B;">
+                    Supported Data Sources
+                </h2>
+                <p style="color:#64748B;font-size:1rem;max-width:500px;margin:0.5rem auto 1.5rem;">
+                    MiMo Hub works with multiple data formats — and more are on the way.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+
+            col1, col2 = st.columns(2)
+            with col1:
+                st.markdown("""
+                <div style="padding:1.5rem;background:#F0FDF4;border:2px solid #86EFAC;border-radius:16px;text-align:center;">
+                    <p style="font-size:2.5rem;margin-bottom:0.5rem;">📊</p>
+                    <p style="font-weight:800;color:#166534;font-size:1.1rem;">Excel & CSV</p>
+                    <p style="color:#15803D;font-size:0.85rem;margin-top:0.5rem;">
+                        <strong>.xlsx</strong> • <strong>.xls</strong> • <strong>.csv</strong>
+                    </p>
+                    <p style="color:#059669;font-size:0.82rem;margin-top:0.3rem;">Multi-sheet workbooks supported</p>
+                    <div style="margin-top:0.8rem;">
+                        <span style="background:#DCFCE7;color:#166534;padding:0.3rem 0.8rem;border-radius:20px;font-size:0.75rem;font-weight:700;">✅ AVAILABLE NOW</span>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+            with col2:
+                st.markdown("""
+                <div style="padding:1.5rem;background:#F5F3FF;border:2px dashed #C4B5FD;border-radius:16px;text-align:center;">
+                    <p style="font-size:2.5rem;margin-bottom:0.5rem;">🗄️</p>
+                    <p style="font-weight:800;color:#5B21B6;font-size:1.1rem;">MySQL Database</p>
+                    <p style="color:#6D28D9;font-size:0.85rem;margin-top:0.5rem;">
+                        Connect • Query • Analyze
+                    </p>
+                    <p style="color:#7C3AED;font-size:0.82rem;margin-top:0.3rem;">Direct database connection via natural language</p>
+                    <div style="margin-top:0.8rem;">
+                        <span style="background:#EDE9FE;color:#5B21B6;padding:0.3rem 0.8rem;border-radius:20px;font-size:0.75rem;font-weight:700;">🔜 COMING SOON</span>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+        # ── Step 2: Upload ──────────────────────────────────────────
+        elif step == 2:
             st.markdown("""
             <div style="text-align:center;">
                 <p style="font-size:3rem;">📁</p>
                 <h2 style="font-size:1.8rem;font-weight:700;color:#1E293B;">
-                    Step 1 — Upload Your Excel File
+                    Step 2 — Upload Your File
                 </h2>
                 <p style="color:#64748B;font-size:1rem;max-width:500px;margin:0.5rem auto 1.5rem;">
                     Upload any <strong>.xlsx</strong>, <strong>.xls</strong>, or <strong>.csv</strong> file.
@@ -173,13 +217,13 @@ if not user.get("onboarded"):
                 </div>
                 """, unsafe_allow_html=True)
 
-        # ── Step 2: Analyze & Chat ──────────────────────────────────
-        elif step == 2:
+        # ── Step 3: Analyze & Chat ──────────────────────────────────
+        elif step == 3:
             st.markdown("""
             <div style="text-align:center;">
                 <p style="font-size:3rem;">🤖</p>
                 <h2 style="font-size:1.8rem;font-weight:700;color:#1E293B;">
-                    Step 2 — Analyze & Chat
+                    Step 3 — Analyze & Chat
                 </h2>
                 <p style="color:#64748B;font-size:1rem;max-width:520px;margin:0.5rem auto 1.5rem;">
                     Once your file is uploaded, MiMo Hub auto-generates a full analysis dashboard.
@@ -216,16 +260,16 @@ if not user.get("onboarded"):
                 </div>
                 """, unsafe_allow_html=True)
 
-        # ── Step 3: Export & API Key ────────────────────────────────
-        elif step == 3:
+        # ── Step 4: Export & API Key ────────────────────────────────
+        elif step == 4:
             st.markdown("""
             <div style="text-align:center;">
                 <p style="font-size:3rem;">🔑</p>
                 <h2 style="font-size:1.8rem;font-weight:700;color:#1E293B;">
-                    Step 3 — API Key & Export
+                    Step 4 — API Key & Export
                 </h2>
                 <p style="color:#64748B;font-size:1rem;max-width:520px;margin:0.5rem auto 1.5rem;">
-                    To use AI Chat, you'll need a <strong>free Xiaomi MiMo API key</strong>.
+                    To use AI Chat, you'll need a <a href="https://platform.xiaomimimo.com/#/console/api-keys" target="_blank" style="color:#EA580C;font-weight:700;text-decoration:underline;">Xiaomi MiMo API key</a>.
                     You can also export beautiful reports anytime.
                 </p>
             </div>
@@ -238,7 +282,7 @@ if not user.get("onboarded"):
                     <p style="font-size:1.5rem;margin-bottom:0.3rem;">🔑</p>
                     <p style="font-weight:700;color:#9A3412;">BYOK — Bring Your Own Key</p>
                     <p style="color:#C2410C;font-size:0.85rem;margin-top:0.3rem;">
-                        Get a free key at <strong>platform.xiaomimimo.com</strong>.
+                        Get your key at <a href="https://platform.xiaomimimo.com/#/console/api-keys" target="_blank" style="color:#C2410C;font-weight:700;text-decoration:underline;">platform.xiaomimimo.com</a>.
                         Enter it in the sidebar — it's never stored on any server.
                     </p>
                 </div>

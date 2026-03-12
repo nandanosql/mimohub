@@ -23,7 +23,7 @@ def load_css():
     """Load external CSS from assets/styles.css."""
     _css_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets", "styles.css")
     if os.path.exists(_css_path):
-        with open(_css_path) as f:
+        with open(_css_path, encoding="utf-8") as f:
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 
@@ -34,23 +34,17 @@ def render_sidebar():
     Returns api_key_input string.
     """
     with st.sidebar:
-        # ─── User Greeting ──────────────────────────────────────────────
-        user = get_user()
-        if user and user.get("name"):
-            st.markdown(
-                f"<div style='text-align:center;padding:0.5rem 0 0.2rem;'>"
-                f"<span style='font-size:1.4rem;'>👋</span><br>"
-                f"<span style='font-size:0.95rem;font-weight:600;color:#F1F5F9;'>Hi, {user['name']}!</span>"
-                f"</div>",
-                unsafe_allow_html=True,
-            )
-            with st.expander("⚙️ Settings", expanded=False):
-                new_name = st.text_input("Update name", value=user["name"], key="setting_name")
-                if new_name.strip() and new_name.strip() != user["name"]:
-                    if st.button("Save", key="save_name"):
-                        update_name(new_name)
-                        st.rerun()
-            st.divider()
+        # Disable Chat & Export nav links until a file is uploaded
+        if "file_bytes" not in st.session_state:
+            st.markdown("""
+            <style>
+                [data-testid="stSidebarNav"] li:nth-child(3),
+                [data-testid="stSidebarNav"] li:nth-child(4) {
+                    pointer-events: none;
+                    opacity: 0.35;
+                }
+            </style>
+            """, unsafe_allow_html=True)
 
         st.markdown("### 🔑 MiMo AI API Key")
         api_key_input = st.text_input(

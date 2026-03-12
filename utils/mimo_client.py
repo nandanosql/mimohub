@@ -65,7 +65,12 @@ def chat_with_data(messages: list, data_context: str, api_key: str, stream: bool
         )
 
         if stream:
-            return response  # generator
+            def _text_stream():
+                for chunk in response:
+                    content = chunk.choices[0].delta.content
+                    if content:
+                        yield content
+            return _text_stream()
         else:
             return response.choices[0].message.content
 
