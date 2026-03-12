@@ -1,0 +1,147 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   MiMo Hub — Stylesheet
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0');
+
+/* ── Fix sidebar toggle icon ─────────────── */
+[data-testid="stSidebarCollapsedControl"] button,
+[data-testid="collapsedControl"] button {
+    font-family: 'Material Symbols Rounded' !important;
+}
+
+/* ── Global ───────────────────────────────── */
+html, body, [class*="st-"] {
+    font-family: 'Inter', sans-serif;
+}
+.block-container {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+/* ── Header ───────────────────────────────── */
+.hero-header {
+    text-align: center;
+    padding: 1.8rem 1rem 1rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, rgba(255,105,0,0.08) 0%, rgba(59,130,246,0.05) 50%, rgba(16,185,129,0.05) 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(255,105,0,0.15);
+}
+.hero-header h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF6900 0%, #E85D00 50%, #CC5200 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.3rem;
+}
+.hero-header p {
+    color: #64748B;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* ── Metric Cards ─────────────────────────── */
+.metric-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 1.2rem 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.metric-card:hover {
+    border-color: rgba(255,105,0,0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255,105,0,0.1);
+}
+.metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FF6900;
+}
+.metric-label {
+    color: #64748B;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
+}
+
+/* ── Quality Badge ────────────────────────── */
+.quality-card {
+    background: #F8F9FB;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+.quality-card:hover {
+    background: #F1F5F9;
+    border-color: rgba(255,105,0,0.3);
+}
+
+/* ── Sidebar ──────────────────────────────── */
+section[data-testid="stSidebar"] {
+    background: #F8F9FB;
+    border-right: 1px solid #E2E8F0;
+}
+section[data-testid="stSidebar"] .stMarkdown h3 {
+    color: #FF6900;
+    font-weight: 700;
+}
+
+/* ── Chat Bubbles ─────────────────────────── */
+.stChatMessage[data-testid="stChatMessage"] {
+    border-radius: 16px;
+    border: 1px solid #E2E8F0;
+}
+
+/* ── Tabs ──────────────────────────────────── */
+button[data-baseweb="tab"] {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* ── Upload area ──────────────────────────── */
+[data-testid="stFileUploader"] {
+    border-radius: 16px;
+}
+[data-testid="stFileUploader"] section {
+    border: 2px dashed rgba(255,105,0,0.3);
+    border-radius: 16px;
+    background: rgba(255,105,0,0.02);
+    transition: border-color 0.3s;
+}
+[data-testid="stFileUploader"] section:hover {
+    border-color: rgba(255,105,0,0.6);
+}
+
+/* ── Plotly charts rounding ───────────────── */
+.stPlotlyChart {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #E2E8F0;
+}
+
+/* ── Scrollbar ────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,105,0,0.25); border-radius: 3px; }
+
+/* ── Rate Limit Warning ──────────────────── */
+.rate-limit-warning {
+    color: #F59E0B;
+    font-size: 0.82rem;
+    text-align: center;
+    padding: 0.4rem;
+    background: rgba(245,158,11,0.08);
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
